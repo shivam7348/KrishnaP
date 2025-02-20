@@ -7,6 +7,7 @@ import gun from "../Pages/fwdkrishnatradersproductsmain/flamegun4way.jpg";
 import sprinklermachine from "../Pages/fwdkrishnatradersproductsmain/SprinklerSmall.jpg";
 import sunheaterwithtimer from "../Pages/fwdkrishnatradersproductsmain/sunheaterwith-timer.jpg";
 import chickfeeder3kg from "../Pages/fwdkrishnatradersproducts/chickfeeder3kg.jpg";
+import growerdrinker8ltr from "../Pages/fwdkrishnatradersproducts/growerdrinker8ltr.jpg";
 
 const ModernHeroSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,7 +28,7 @@ const ModernHeroSlider = () => {
       highlight: "Premium Quality",
       image:
         "https://www.poultryworld.net/app/uploads/2024/06/Untitled-design-8-1-1536x1024.jpeg",
-      subImages: [sunheaterwithtimer, ],
+      subImages: [sunheaterwithtimer, chickfeeder3kg, growerdrinker8ltr],
     },
   ];
 
@@ -54,7 +55,7 @@ const ModernHeroSlider = () => {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-gray-900">
+    <div className="relative h-screen w-full overflow-hidden bg-white-600">
       {slides.map((slide, index) => (
         <div
           key={index}

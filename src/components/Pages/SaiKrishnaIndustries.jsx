@@ -1,131 +1,155 @@
-import React from "react";
+import React, { useState } from "react";
+import { ArrowRight, Award, Factory, Users, Package } from "lucide-react";
 
-const SaiKrishnaIndustries = () => {
+const PoultryEquipmentCompany = () => {
+  const [activeTab, setActiveTab] = useState("infrastructure");
+
+  const features = [
+    {
+      id: "infrastructure",
+      icon: <Factory className="w-6 h-6" />,
+      title: "Infrastructure",
+      content: [
+        "State-of-the-art manufacturing facility",
+        "Advanced Plastic Injection Molding",
+        "Extensive storage capabilities",
+        "Strategic Hyderabad location",
+      ],
+    },
+    {
+      id: "leadership",
+      icon: <Users className="w-6 h-6" />,
+      title: "Leadership",
+      content: [
+        "Expert guidance by Managing Partners",
+        "Mr. Srikanth M & Naveen Kumar",
+        "25+ years combined experience",
+        "Industry-leading expertise",
+      ],
+    },
+    {
+      id: "products",
+      icon: <Package className="w-6 h-6" />,
+      title: "Products",
+      content: [
+        "Innovative poultry equipment",
+        "High-quality materials",
+        "Durable construction",
+        "Modern design principles",
+      ],
+    },
+  ];
+
+  const stats = [
+    { value: "30+", label: "Years Experience" },
+    { value: "50+", label: "Products" },
+    { value: "100+", label: "Dealers" },
+    { value: "10+", label: "Countries Served" },
+  ];
+
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Image Grid */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-              src=""
-              alt="Sai Krishna Building"
-            />
-          </div>
-          <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-              src=""
-              alt="Image 2"
-            />
-          </div>
-          <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-              src=""
-              alt="Image 4"
-            />
-          </div>
-          <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
-              src=""
-              alt="Image 1"
-            />
-          </div>
-        </div>
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto  px-4 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Content Section - Left Side */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Award className="text-red-600 w-6 h-6" />
+                <span className="text-red-600 font-semibold">
+                  Industry Leaders Since 2002
+                </span>
+              </div>
+              <h1 className="text-4xl font-bold text-gray-900">
+                Krishna Poultry Equipment
+                <span className="block text-red-600">
+                  Manufacturers & Traders
+                </span>
+              </h1>
+              <p className="text-gray-600 leading-relaxed">
+                Pioneering innovation in poultry equipment from our base in
+                Hyderabad, Telangana. Delivering excellence through cutting-edge
+                technology and unmatched expertise.
+              </p>
+            </div>
 
-        {/* Content Section */}
-        <div className="space-y-6">
-          <h5 className="text-lg font-semibold text-primary">
-            Welcome to  Krishna Poultry Equipments Manufacturers & Trader
-          </h5>
-          <h1 className="text-4xl font-bold text-gray-800">
-            About Sai Krishna Poultry Equipment Manufacturers & Traders
-          </h1>
-          <p className="text-gray-600 leading-relaxed">
-            Sai Krishna Plastic Industries, situated in Hyderabad, Telangana,
-            has been a trailblazer in the poultry equipment industry since its
-            inception in 2002.
-          </p>
+            {/* Feature Tabs */}
+            <div className="space-y-6">
+              <div className="flex space-x-4 border-b border-gray-200">
+                {features.map((feature) => (
+                  <button
+                    key={feature.id}
+                    onClick={() => setActiveTab(feature.id)}
+                    className={`pb-4 flex items-center space-x-2 ${
+                      activeTab === feature.id
+                        ? "border-b-2 border-red-600 text-red-600"
+                        : "text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    {feature.icon}
+                    <span>{feature.title}</span>
+                  </button>
+                ))}
+              </div>
 
-          <div className="space-y-4">
-            <p className="font-semibold text-gray-800">Leadership:</p>
-            <p className="text-gray-600 leading-relaxed">
-              Under the expert guidance of Managing Partners, Mr. Srikanth M and
-              Naveen Kumar, the company has thrived. With a combined experience
-              of 25+ years, they bring unparalleled industry expertise.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <p className="font-semibold text-gray-800">
-              Infrastructure & Capabilities:
-            </p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-2">
-              <li>State-of-the-art infrastructure spanning a vast area</li>
-              <li>Advanced Plastic Injection Molding Machines</li>
-              <li>Ample storage facilities</li>
-              <li>Strategic location in Hyderabad</li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <p className="font-semibold text-gray-800">Market Presence:</p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-2">
-              <li>Extensive dealer network across India</li>
-              <li>Strong international presence</li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <p className="font-semibold text-gray-800">Key Strengths:</p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-2">
-              <li>25+ years of industry expertise</li>
-              <li>Cutting-edge technology</li>
-              <li>Pan-India distribution network</li>
-              <li>Global export capabilities</li>
-              <li>Timely delivery</li>
-              <li>Customer satisfaction</li>
-              <li>High-quality products</li>
-              <li>Adaptability to market demands</li>
-            </ul>
-          </div>
-
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 gap-6">
-            <div className="flex items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="border-l-4 border-primary pl-4">
-                <h1 className="text-5xl font-bold text-primary">30</h1>
-                <p className="text-gray-600">Years of</p>
-                <h6 className="uppercase font-semibold text-gray-800">
-                  Experience
-                </h6>
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                {features.map(
+                  (feature) =>
+                    activeTab === feature.id && (
+                      <ul key={feature.id} className="space-y-4">
+                        {feature.content.map((item, index) => (
+                          <li
+                            key={index}
+                            className="flex items-center space-x-3"
+                          >
+                            <ArrowRight className="w-4 h-4 text-red-600" />
+                            <span className="text-gray-700">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )
+                )}
               </div>
             </div>
-            <div className="flex items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="border-l-4 border-primary pl-4">
-                <h1 className="text-5xl font-bold text-primary">50</h1>
-                <p className="text-gray-600">Number of</p>
-                <h6 className="uppercase font-semibold text-gray-800">
-                  Products
-                </h6>
-              </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-4 rounded-lg shadow-md text-center"
+                >
+                  <div className="text-3xl font-bold text-red-600">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Read More Button */}
-          <a
-            className="inline-block bg-primary text-white py-3 px-6 rounded-lg hover:bg-opacity-90 transition duration-300"
-            href="#"
-          >
-            Read More
-          </a>
+          {/* Image Grid - Right Side */}
+          <div className="relative">
+            <div className="grid grid-cols-2 gap-4 sticky top-8">
+              {[1, 2, 3, 4].map((num) => (
+                <div
+                  key={num}
+                  className="group relative overflow-hidden rounded-xl shadow-lg aspect-square"
+                >
+                  <img
+                    src={`/api/placeholder/400/400`}
+                    alt={`Poultry Equipment ${num}`}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default SaiKrishnaIndustries;
+export default PoultryEquipmentCompany;

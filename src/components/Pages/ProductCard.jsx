@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import cagebabydrinker from "../Pages/fwdkrishnatradersproducts/cagebabydrinker.jpg";
+import chickcrate from "../Pages/fwdkrishnatradersproducts/chickcrate.jpg";
+import chickdrinker3ltr from "./fwdkrishnatradersproducts/chickdrinker3ltr.jpg";
+import debeakingmachineautomatic from "./fwdkrishnatradersproducts/debeakingmachineautomatic.jpg";
+import chickfeeder3kg from "./fwdkrishnatradersproducts/chickfeeder3kg.jpg";
+import deberakingmachinemanual from "./fwdkrishnatradersproducts/deberakingmachinemanual.jpg";
+import gasbrooder from "./fwdkrishnatradersproducts/gasbrooder.jpg";
+import growerdrinker8ltr from "./fwdkrishnatradersproducts/growerdrinker8ltr.jpg";
 
 const ProductCard = ({ product }) => (
   <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4">
@@ -32,10 +39,10 @@ const Products = () => {
   const [activeTab, setActiveTab] = useState("tab-1");
 
   const categories = [
-    { id: "tab-1", category: "Drinking", title: "Drinking Equipments" },
-    // { id: "tab-2", category: "Feeding", title: "Feeding Equipments" },
-    // { id: "tab-3", category: "Climate", title: "Climate Control" },
-    // { id: "tab-4", category: "Transport", title: "Transport Equipments" },
+    { id: "tab-1", category: "Drinking", title: "Equipmemnts " },
+    { id: "tab-2", category: "Feeding", title: "DRINKER " },
+    // { id: "tab-3", category: "Climate", title: "BROADER Control" },
+    // { id: "tab-4", category: "Transport", title: "DEBEAKER Equipments" },
     // { id: "tab-5", category: "Brooding", title: "Brooding Equipments" },
     // { id: "tab-6", category: "Disinfecting", title: "Disinfecting Equipments" },
     // { id: "tab-7", category: "Other", title: "Other Equipments" },
@@ -50,35 +57,38 @@ const Products = () => {
       },
       {
         name: "Vaccinator",
-        image: "Chick%20Drinker.png",
+        image: chickcrate,
         link: "chick-drinker",
       },
       {
-        name: "Nipple Drinker",
-        image:
-          "https://5.imimg.com/data5/SELLER/Default/2024/5/416190368/JD/OT/OO/35198948/plastic-fogger-1000x1000.png",
+        name: "Debeaking Machine Automatic ",
+        image: debeakingmachineautomatic,
         link: "jumbo-drinker",
       },
       {
         name: "Basin Chick Feeder",
-        image:
-          "file:///c%3A/Users/pradeep%20yadav/OneDrive/Desktop/php/s/KrishnaP/public/fwdkrishnatradersproducts%20%281%29/BasinChickDrinker2.5.jpg",
+        image: chickdrinker3ltr,
         link: "deluxe-drinker",
       },
       {
         name: "Gas Broder",
-        image: "Deluxe%20Jumbo%20Drinker.png",
+        image: chickfeeder3kg,
         link: "deluxe-jumbo-drinker",
       },
       {
         name: "Chick Crate",
-        image: "grower-drinker.png",
+        image: deberakingmachinemanual,
         link: "grower-drinker",
       },
       {
         name: "Debeaking Machine Automatic",
-        image: "Nipples-%26-Pressure-Regulator.png",
+        image: gasbrooder,
         link: "nipples-and-pressure-regulator",
+      },
+      {
+        name: "growerdrinker8ltr",
+        image: growerdrinker8ltr,
+        link: "growerdrinker8ltr",
       },
     ],
     "tab-2": [
@@ -124,13 +134,13 @@ const Products = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
-        <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">
+        <h2 className="text-base text-red-800 font-semibold tracking-wide uppercase">
           Explore Our Range
         </h2>
-        <h1 className="mt-2 text-4xl font-bold text-gray-900 sm:text-5xl">
+        <h1 className="mt-2 text-4xl font-bold text-red-600 sm:text-5xl">
          Our Products
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-black-600">
           High-quality equipment designed to meet all your poultry farming
           needs.
         </p>
@@ -144,7 +154,7 @@ const Products = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-3 text-sm font-medium rounded-full transition-colors duration-300 ${
                 activeTab === tab.id
-                  ? "bg-blue-500 text-white"
+                  ? "bg-red-500 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >

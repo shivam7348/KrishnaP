@@ -69,7 +69,7 @@ const Header = () => {
           {/* Logo Section */}
           <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
+              <img src="/logo.png" alt="Logo" className="h-14 w-auto" />
             </Link>
             <div className="hidden md:block">
               <h1 className="text-red-700 font-bold text-xl">
@@ -80,7 +80,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8 text-red-700 font-bold text-xl">
             <Link to="/" className="nav-link">
               HOME
             </Link>
