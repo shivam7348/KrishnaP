@@ -1,9 +1,12 @@
 import React from 'react'
+import ProductCard from "../ProductCard"
 
 const Feeder  = () => {
   return (
-    <div>Feeder </div>
-  )
+    <div className=''>
+      <ProductCard />
+    </div>
+  );
 }
 
 export default Feeder 
