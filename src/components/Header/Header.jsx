@@ -11,7 +11,10 @@ const Header = () => {
   };
 
   const handleMouseLeave = () => {
-    setIsDropdownOpen(false);
+    // Only close if not clicked
+    if (!isDropdownOpen) {
+      setIsDropdownOpen(false);
+    }
   };
 
   // Close mobile menu when clicking outside
@@ -84,13 +87,9 @@ const Header = () => {
               onMouseLeave={handleMouseLeave}
               ref={dropdownRef}
             >
-              <Link
-                to="/products"
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="text-white hover:text-gray-400 focus:outline-none flex items-center"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setIsDropdownOpen(false);
-                }}
               >
                 PRODUCTS
                 <svg
@@ -108,14 +107,10 @@ const Header = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </Link>
+              </button>
 
               {isDropdownOpen && (
-                <div
-                  className="absolute mt-2 w-48 bg-white rounded-lg shadow-lg"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
+                <div className="absolute mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
                   <Link
                     to="/products/feeder"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
@@ -155,7 +150,6 @@ const Header = () => {
                     }}
                   >
                     BIRD TRAY
-
                   </Link>
                   <Link
                     to="/products/others"

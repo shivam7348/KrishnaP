@@ -12,7 +12,7 @@ const Home = () => {
       <HeroSlider />
       {/* <SaiKrishnaIndustries /> */}
       {/* <MainComponent /> */}
-      <Popup/>
+      {/* <Popup/> */}
       <ProductCard />
       <Testimonials/>
     </div>

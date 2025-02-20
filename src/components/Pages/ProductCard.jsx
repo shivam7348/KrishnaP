@@ -3,7 +3,7 @@ import { Link, Route, Routes, useLocation } from 'react-router-dom';
 
 const ProductCard = ({ product }) => (
   <div className="w-full md:w-1/2 lg:w-1/4 p-4">
-    <Link to={`/product/${product.link.replace('.html', '')}`} className="block">
+    <Link to={`/product/${product.link}`} className="block">
       <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
         <img 
           src={`img/${product.image}`} 
@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => (
   </div>
 );
 
-const Products = () => {
+const   Products = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('tab-1');
 

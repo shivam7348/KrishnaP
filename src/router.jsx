@@ -9,6 +9,7 @@ import Drinker from "./components/Pages/Products/Drinker ";
 import Broder from "./components/Pages/Products/Broder";
 import BirdTray from "./components/Pages/Products/BirdTray";
 import Others from "./components/Pages/Products/Others";
+import PageCardDetails from "./components/Pages/PageCardDetails";
 
 // Import individual product pages
 
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
         path: "contact",
         element: <Contact />,
       },
+      {
+        path: "/product/:slug",
+        element: <PageCardDetails />,
+      },
+  
     ],
   },
 ]);
