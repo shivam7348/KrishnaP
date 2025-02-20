@@ -1,4 +1,5 @@
 import React from "react";
+
 import FloatingActionFooter from "./FloatingActionFooter";
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <img src="img/SKPE-LOGO.png" alt="Logo" className="w-40 mb-4" />
+            <img src="/logo.png" alt="Logo" className="w-17 h-17 mb-4" />
             <nav className="flex flex-col space-y-2">
               <a href="index.html" className="hover:underline">
                 Home
