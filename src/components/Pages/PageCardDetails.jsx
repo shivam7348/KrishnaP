@@ -2,7 +2,9 @@ import React from 'react'
 
 function PageCardDetails() {
     return (
-        <div>PageCardDetails</div>
+        <div>
+            
+        </div>
     )
 }
 

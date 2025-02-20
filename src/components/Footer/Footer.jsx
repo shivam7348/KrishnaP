@@ -40,7 +40,7 @@ const Footer = () => {
               68
             </p>
             <p className="text-gray-400">📞 9246659508, 8897911508</p>
-            <p className="text-gray-400">📧 info@saikrishnapoultry.com</p>
+            <p className="text-gray-400">📧 info@krishnapoultry.com</p>
             <div className="flex space-x-4 mt-2">
               <a href="#" className="text-gray-400 hover:text-white">
                 <i className="fab fa-twitter"></i>
@@ -76,7 +76,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-10 pt-5 text-center text-gray-400">
           &copy;{" "}
           <a href="#" className="hover:underline">
-            Sai Krishna Poultry Equipments
+           Krishna Poultry Equipments
           </a>
           , All Rights Reserved.
         </div>

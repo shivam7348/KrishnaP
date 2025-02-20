@@ -1,210 +1,216 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Phone,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const handleMouseEnter = () => {
-    setIsDropdownOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    // Only close if not clicked
-    if (!isDropdownOpen) {
-      setIsDropdownOpen(false);
-    }
-  };
-
-  // Close mobile menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest("nav")) {
-        setIsMobileMenuOpen(false);
-      }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isMobileMenuOpen]);
+  const productLinks = [
+    { name: "FEEDER", path: "/products/feeder" },
+    { name: "DRINKER", path: "/products/drinker" },
+    { name: "BROODER & DEBEAKER", path: "/products/brooder-debeaker" },
+    { name: "BIRD TRAY", path: "/products/bird-tray" },
+    { name: "OTHERS", path: "/products/others" },
+  ];
 
   return (
-    <div className="w-full relative">
-      <nav className="flex flex-wrap items-center justify-between bg-gray-900 p-4">
-        {/* Logo and mobile menu button */}
-        <div className="w-full lg:w-1/3 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <img src="./logo.png" className="h-12" alt="Logo" />
-          </Link>
-          <button
-            className="lg:hidden text-white focus:outline-none"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-lg" : "bg-transparent"
+      }`}
+    >
+      {/* Top Bar */}
+      <div className="bg-red-700 text-white py-2 px-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+            <a
+              href="tel:9246659508"
+              className="flex items-center hover:text-gray-200 transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            </svg>
-          </button>
+              <Phone size={16} className="mr-2" />
+              <span>924-665-9508</span>
+            </a>
+          </div>
+          <div className="flex space-x-4">
+            <Facebook className="w-4 h-4 cursor-pointer hover:text-gray-200 transition-colors" />
+            <Twitter className="w-4 h-4 cursor-pointer hover:text-gray-200 transition-colors" />
+            <Youtube className="w-4 h-4 cursor-pointer hover:text-gray-200 transition-colors" />
+            <Linkedin className="w-4 h-4 cursor-pointer hover:text-gray-200 transition-colors" />
+          </div>
         </div>
+      </div>
 
-        {/* Navigation Links */}
-        <div
-          className={`w-full lg:w-1/2 ${
-            isMobileMenuOpen ? "block" : "hidden"
-          } lg:flex items-center justify-end`}
-        >
-          <div className="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
-            <Link
-              to="/"
-              className="text-white hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+      {/* Main Header */}
+      <div
+        className={`container mx-auto px-4 py-4 ${
+          isScrolled ? "py-2" : "py-4"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          {/* Logo Section */}
+          <div className="flex items-center space-x-4">
+            <Link to="/" className="flex items-center space-x-2">
+              <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
+            </Link>
+            <div className="hidden md:block">
+              <h1 className="text-red-700 font-bold text-xl">
+                KRISHNA POULTRY EQUIP
+              </h1>
+              <p className="text-gray-600 text-sm">MANUFACTURERS & TRADER</p>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8">
+            <Link to="/" className="nav-link">
               HOME
             </Link>
-            <Link
-              to="/about"
-              className="text-white hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <Link to="/about" className="nav-link">
               ABOUT
             </Link>
 
             {/* Products Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              ref={dropdownRef}
-            >
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="text-white hover:text-gray-400 focus:outline-none flex items-center"
+            <div className="relative group">
+              <Link
+                to="/products"
+                className="nav-link flex items-center"
+                onMouseEnter={() => setActiveDropdown("products")}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
                 PRODUCTS
-                <svg
-                  className={`w-4 h-4 ml-2 transition-transform ${
-                    isDropdownOpen ? "transform rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
+                <ChevronDown className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" />
+              </Link>
 
-              {isDropdownOpen && (
-                <div className="absolute mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
+              <div
+                className={`absolute top-full left-0 w-64 bg-white shadow-lg rounded-lg py-2 transition-all duration-300 ${
+                  activeDropdown === "products"
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible -translate-y-2"
+                }`}
+                onMouseEnter={() => setActiveDropdown("products")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                {productLinks.map((product) => (
                   <Link
-                    to="/products/feeder"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                    onClick={() => {
-                      setIsDropdownOpen(false);
-                      setIsMobileMenuOpen(false);
-                    }}
+                    key={product.path}
+                    to={product.path}
+                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-700 transition-colors"
                   >
-                    FEEDER
+                    {product.name}
                   </Link>
-                  <Link
-                    to="/products/drinker"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                    onClick={() => {
-                      setIsDropdownOpen(false);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    DRINKER
-                  </Link>
-                  <Link
-                    to="/products/brooder-debeaker"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                    onClick={() => {
-                      setIsDropdownOpen(false);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    BROODER & DEBEAKER
-                  </Link>
-                  <Link
-                    to="/products/bird-tray"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                    onClick={() => {
-                      setIsDropdownOpen(false);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    BIRD TRAY
-                  </Link>
-                  <Link
-                    to="/products/others"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
-                    onClick={() => {
-                      setIsDropdownOpen(false);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    OTHERS
-                  </Link>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
 
-            <Link
-              to="/contact"
-              className="text-white hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
+            <Link to="/contact" className="nav-link">
               CONTACT
             </Link>
+
             <a
               href="tel:9246659508"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="bg-red-700 text-white px-6 py-2 rounded-full hover:bg-red-800 transition-colors"
             >
-              Call us: 9246659508
+              Call Now
             </a>
-          </div>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-700" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-700" />
+            )}
+          </button>
         </div>
 
-        {/* Social Media Icons */}
+        {/* Mobile Navigation */}
         <div
-          className={`w-full lg:w-1/6 ${
-            isMobileMenuOpen ? "block" : "hidden"
-          } lg:flex justify-center mt-4 lg:mt-0`}
+          className={`lg:hidden ${isMobileMenuOpen ? "block" : "hidden"} mt-4`}
         >
-          <div className="flex space-x-4">
-            <a href="#" className="text-white hover:text-gray-400">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="text-white hover:text-gray-400">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="text-white hover:text-gray-400">
-              <i className="fab fa-youtube"></i>
-            </a>
-            <a href="#" className="text-white hover:text-gray-400">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
+          <nav className="flex flex-col space-y-4">
+            <Link to="/" className="mobile-nav-link">
+              HOME
+            </Link>
+            <Link to="/about" className="mobile-nav-link">
+              ABOUT
+            </Link>
+
+            <div className="space-y-2">
+              <button
+                className="w-full flex items-center justify-between mobile-nav-link"
+                onClick={() =>
+                  setActiveDropdown(
+                    activeDropdown === "mobile-products"
+                      ? null
+                      : "mobile-products"
+                  )
+                }
+              >
+                PRODUCTS
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${
+                    activeDropdown === "mobile-products" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`space-y-2 pl-4 ${
+                  activeDropdown === "mobile-products" ? "block" : "hidden"
+                }`}
+              >
+                {productLinks.map((product) => (
+                  <Link
+                    key={product.path}
+                    to={product.path}
+                    className="block py-2 text-gray-600 hover:text-red-700"
+                  >
+                    {product.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link to="/contact" className="mobile-nav-link">
+              CONTACT
+            </Link>
+          </nav>
         </div>
-      </nav>
-    </div>
+      </div>
+
+      <style jsx>{`
+        .nav-link {
+          @apply text-gray-700 hover:text-red-700 font-medium transition-colors;
+        }
+
+        .mobile-nav-link {
+          @apply text-gray-700 hover:text-red-700 font-medium py-2 transition-colors;
+        }
+      `}</style>
+    </header>
   );
 };
 

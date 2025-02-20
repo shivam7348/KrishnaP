@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Spinner from "./Spinner";
 
 const Skeleton = () => (
   <div className="w-80 h-6 bg-gray-300 rounded-md animate-pulse"></div>
@@ -11,7 +10,7 @@ const LoaderExample = () => {
 
   const handleClick = () => {
     setLoading(true);
-    setContent(""); // Pehle content clear karo
+    setContent(""); // Clear content first
 
     setTimeout(() => {
       setLoading(false);
@@ -30,11 +29,15 @@ const LoaderExample = () => {
 
       {loading ? (
         <div className="flex flex-col items-center">
-          {/* Red Color Spinner */}
-          <div className="w-16 h-16 border-4 border-red-500 border-dashed rounded-full animate-spin"></div>
-
-          {/* Loading Image */}
-          <img src="/loading.gif" alt="Loading" className="w-20 h-20 mt-4" />
+          {/* Image with Spinner Overlay */}
+          <img src="" alt="" />
+          <div className="relative">
+            <img src="/loading.gif" alt="Loading" className="w-20 h-20 mt-4" />
+            {/* Spinner Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-16 h-16 border-4 border-red-500 border-dashed rounded-full animate-spin"></div>
+            </div>
+          </div>
 
           <Skeleton />
         </div>

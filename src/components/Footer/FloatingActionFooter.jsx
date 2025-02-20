@@ -8,7 +8,7 @@ const FloatingActionFooter = () => {
   return (
     <div className="bg-black backdrop-blur-sm fixed bottom-0 w-full py-3 px-4 flex justify-between items-center z-50">
       <span className="text-sm font-medium text-center text-white">
-        Happy Birthday Decoration
+        Krishna Polutry Equip Manufacturer & Trader
       </span>
 
       {/* Fixed Action Buttons */}
