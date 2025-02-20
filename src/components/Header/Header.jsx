@@ -32,7 +32,7 @@ const Header = () => {
         {/* Logo and mobile menu button */}
         <div className="w-full lg:w-1/3 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src="img/logo-SKPE.png" className="h-12" alt="Logo" />
+            <img src="./logo.png" className="h-12" alt="Logo" />
           </Link>
           <button
             className="lg:hidden text-white focus:outline-none"
@@ -67,14 +67,14 @@ const Header = () => {
               className="text-white hover:text-gray-400"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              HOME
             </Link>
             <Link
               to="/about"
               className="text-white hover:text-gray-400"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              About
+              ABOUT
             </Link>
 
             {/* Products Dropdown */}
@@ -92,7 +92,7 @@ const Header = () => {
                   setIsDropdownOpen(false);
                 }}
               >
-                Products
+                PRODUCTS
                 <svg
                   className={`w-4 h-4 ml-2 transition-transform ${
                     isDropdownOpen ? "transform rotate-180" : ""
@@ -124,7 +124,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    Feeder
+                    FEEDER
                   </Link>
                   <Link
                     to="/products/drinker"
@@ -134,7 +134,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    Drinker
+                    DRINKER
                   </Link>
                   <Link
                     to="/products/brooder-debeaker"
@@ -144,7 +144,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    Brooder & Debeaker
+                    BROODER & DEBEAKER
                   </Link>
                   <Link
                     to="/products/bird-tray"
@@ -154,7 +154,8 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    Bird Tray
+                    BIRD TRAY
+
                   </Link>
                   <Link
                     to="/products/others"
@@ -164,7 +165,7 @@ const Header = () => {
                       setIsMobileMenuOpen(false);
                     }}
                   >
-                    Others
+                    OTHERS
                   </Link>
                 </div>
               )}
@@ -175,7 +176,7 @@ const Header = () => {
               className="text-white hover:text-gray-400"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Contact
+              CONTACT
             </Link>
             <a
               href="tel:9246659508"

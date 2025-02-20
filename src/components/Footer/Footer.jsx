@@ -1,4 +1,5 @@
 import React from "react";
+import FloatingActionFooter from "./FloatingActionFooter";
 
 const Footer = () => {
   return (
@@ -80,6 +81,7 @@ const Footer = () => {
           , All Rights Reserved.
         </div>
       </div>
+        <FloatingActionFooter/>
     </footer>
   );
 };

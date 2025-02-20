@@ -1,11 +1,18 @@
 import React from 'react'
+import Banner from './../../Banner/Banner';
 
 const AboutUs = () => {
+  const breadcrumb = [
+    {name: 'Home', link: '/', active: true}
+]
   return (
     <div>
-        <h1>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sequi perferendis voluptate at sapiente enim id repudiandae illo similique officiis magni nisi facilis eos repellat, temporibus nemo explicabo exercitationem saepe.
-        </h1>
+       <Banner
+        title="About"
+        image="https://www.saikrishnapoultry.co.in/img/slider.png"
+        breadcrumbItems={breadcrumb}
+      />
+     
     </div>
   )
 }

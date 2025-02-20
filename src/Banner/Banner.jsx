@@ -18,7 +18,7 @@ const Banner = ({ title, image, breadcrumbItems }) => {
             <div className="page-banner-cont text-left mt-10">
               <h2 className="text-4xl font-bold text-white ml-4">{title}</h2>
               <nav aria-label="breadcrumb">
-                <ol className="breadcrumb flex justify-center space-x-2">
+                <ol className="breadcrumb flex justify-start space-x-2"> {/* Changed justify-center to justify-start */}
                   {breadcrumbItems.map((item, index) => (
                     <li
                       key={index}
