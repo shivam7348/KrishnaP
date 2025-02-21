@@ -6,7 +6,7 @@ const AboutUs = () => {
     {name: 'Home', link: '/', active: true}
 ]
   return (
-    <div>
+    <div className='bg-[rgba(0,15,52,0.6)]'>
        <Banner
         title="About"
         image="https://www.saikrishnapoultry.co.in/img/slider.png"

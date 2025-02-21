@@ -57,7 +57,7 @@ const WelcomeSlider = () => {
     if (isAutoPlaying) {
       const interval = setInterval(() => {
         setActiveSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-      }, 5000);
+      }, 10000);
       return () => clearInterval(interval);
     }
   }, [isAutoPlaying, slides.length]);
@@ -71,8 +71,8 @@ const WelcomeSlider = () => {
   };
 
   return (
-    <div className="relative w-full rounded-xl shadow-xl overflow-hidden">
-      <div className="relative min-h-[900px] sm:min-h-[600px] md:min-h-[800px]">
+    <div className="relative w-full rounded-xl shadow-xl overflow-hidden ">
+      <div className="relative min-h-[400px] sm:min-h-[600px] md:min-h-[800px]  ">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -91,33 +91,30 @@ const WelcomeSlider = () => {
             }}
           >
             {/* Semi-transparent overlay */}
-            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-[rgba(0,15,52,0.6)]"></div>
 
             {/* Content Container */}
-            <div className="relative z-10 h-full flex flex-col justify-center sm:justify-start">
+            <div className="relative z-10 h-full flex flex-col justify-center sm:justify-start  min-my-[400px] sm:my-45 md:my-32"> ">
               {/* Title Section */}
               <div className="text-center text-white pt-8 sm:pt-16 px-4 mb-4 sm:mb-8">
                 <span className="bg-red-600 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-4 inline-block">
                   {slide.highlight}
                 </span>
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4">
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4 tracking-wide">
                   {slide.title}
                 </h2>
-                <p className="text-sm sm:text-xl max-w-2xl mx-auto">
+                <p className="text-xs sm:text-lg max-w-2xl mx-auto">
                   {slide.description}
                 </p>
-                <button className="mt-4 sm:mt-6 bg-red-600 hover:bg-indigo-700 text-white font-medium py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:scale-105">
-                  Learn More
-                </button>
               </div>
 
               {/* Images Grid - Responsive Layout */}
-              <div className="px-4 sm:px-6 mt-4 sm:mt-auto mb-8 sm:mb-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 max-w-6xl mx-auto">
+              <div className="px-4 sm:px-6 mb-20 sm:mt-auto sm:mb-16 ">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 max-w-6xl mx-auto mb-50">
                   {slide.images.map((image, imgIndex) => (
                     <div
                       key={imgIndex}
-                      className="relative h-40 sm:h-64 overflow-hidden rounded-lg"
+                      className="relative h-32 sm:h-48 overflow-hidden rounded-lg"
                     >
                       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
                       <div className="absolute inset-2 bg-white/80 backdrop-blur-sm rounded-lg overflow-hidden flex items-center justify-center p-2">
@@ -139,18 +136,18 @@ const WelcomeSlider = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 sm:p-3 rounded-full shadow-lg z-20 text-gray-800 hover:text-indigo-600 transition-all"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white p-1 sm:p-2 rounded-full shadow-lg z-20 text-gray-800 hover:text-indigo-600 transition-all"
         aria-label="Previous slide"
       >
-        <ChevronLeft size={20} />
+        <ChevronLeft size={16} />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 sm:p-3 rounded-full shadow-lg z-20 text-gray-800 hover:text-indigo-600 transition-all"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-1 sm:p-2 rounded-full shadow-lg z-20 text-gray-800 hover:text-indigo-600 transition-all"
         aria-label="Next slide"
       >
-        <ChevronRight size={20} />
+        <ChevronRight size={16} />
       </button>
 
       {/* Indicator Dots */}
@@ -163,10 +160,10 @@ const WelcomeSlider = () => {
             aria-label={`Go to slide ${index + 1}`}
           >
             {activeSlide === index ? (
-              <CircleDot size={12} className="text-white" />
+              <CircleDot size={10} className="text-white" />
             ) : (
               <Circle
-                size={12}
+                size={10}
                 className="text-white/60 hover:text-white transition-colors"
               />
             )}

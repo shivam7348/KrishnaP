@@ -78,7 +78,7 @@ const Header = () => {
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-white shadow-lg"
-          : "bg-gradient-to-b from-black/40 to-transparent"
+          : "bg-gradient-to-b from-danger/40 to-transparent"
       }`}
     >
       {/* Top Bar */}
@@ -105,15 +105,15 @@ const Header = () => {
               />
             </Link>
             <div
-              className={`hidden md:block transition-opacity duration-300 ${
+              className={`hidden md:block  duration-300 ${
                 isScrolled ? "opacity-100" : "opacity-90"
               }`}
             >
-              <h1 className="text-red-500 font-bold text-xl font-mono">
+              <h1 className="text-red-500 font-bold text-xl tracking-tight  ">
                 KRISHNA POULTRY EQUIP
               </h1>
               <p
-                className={`text-sm  transition-colors duration-300 ${
+                className={`text-sm  transition-colors duration-300 tracking-tight ${
                   isScrolled ? "text-white" : "text-white"
                 }`}
               >
